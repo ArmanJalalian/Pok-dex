@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Webpack</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
 
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Pokedex</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Generations <span class="caret"></span></a>
+                    <ul id="generation-links" class="dropdown-menu">
+                        <li><a href="#" data-id="1">Generation 1</a></li>
+                        <li><a href="#" data-id="2">Generation 2</a></li>
+                        <li><a href="#" data-id="3">Generation 3</a></li>
+                        <li><a href="#" data-id="4">Generation 4</a></li>
+                        <li><a href="#" data-id="5">Generation 5</a></li>
+                        <li><a href="#" data-id="6">Generation 6</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div id="generation-pokemon">
+        <span>Choose a generation!</span>
+        <script id="template-error" type="text/template">
+            <span><%= message %></span>
+        </script>
+        <script id="template-generations" type="text/template">
+            <% _.each(generations, function (generation, index, list){ console.log(generation)%>
+            <div>
+                <span><%= generation.attributes.main_region.name %></span>
+                <span><%= generation.attributes.pokemon_species[index].name %></span>
+            </div>
+            <% }); %>
+        </script>
+    </div>
+</div>
 <script type="text/javascript" src="dist/bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="dist/bootstrap.min.js"></script>
 </body>
 </html>
