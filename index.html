@@ -39,10 +39,13 @@
             <span><%= message %></span>
         </script>
         <script id="template-generations" type="text/template">
-            <% _.each(generations, function (generation, index, list){ console.log(generation)%>
+            <% _.each(generations, function (generation, index, list){%>
+            <h1><%= generation.attributes.main_region.name %></h1>
             <div>
-                <span><%= generation.attributes.main_region.name %></span>
-                <span><%= generation.attributes.pokemon_species[index].name %></span>
+                <% _.each(generation.get('pokemon_species'), function(pokemon, index, list){ %>
+                    <span><%= pokemon['name'] %></span>
+                <% }); %>
+
             </div>
             <% }); %>
         </script>

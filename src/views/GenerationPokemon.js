@@ -21,12 +21,13 @@ const GenerationPokemon = View.extend({
         });
     },
     loadGenerationsSuccessHandler: function (collection) {
+        _.each(collection.models, function (pokemon, index, list) {
+        });
+
         this.$el.html(this.templateGenerations({generations: collection.models}));
-        //console.log(collection.toJSON());
     },
     loadGenerationsErrorHandler: function (collection, response) {
         this.$el.html(this.templateError({message: response.responseJSON.error}));
-        console.log(collection);
     }
 });
 
