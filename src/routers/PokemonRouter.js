@@ -16,7 +16,7 @@ const PokemonRouter = Router.extend({
     /**
      * Route callback, used to trigger global event
      *
-     * @param id
+     * @param pokemonId
      */
     pokemonAction: function (pokemonId) {
         App.events.trigger('newPokemon', {

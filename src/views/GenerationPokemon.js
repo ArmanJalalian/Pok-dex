@@ -2,8 +2,10 @@
  * Created by Arman Jalalian on 5/31/2017.
  */
 import {View} from 'backbone';
-import PokemonLinks from '../views/PokemonLinks';
 import _ from 'underscore';
+import Pokemons from '../collections/Pokemons';
+import PokemonLinks from '../views/PokemonLinks';
+import PokemonDetails from '../views/PokemonDetails';
 
 /**
  * Object representing the GenerationPokemon element
@@ -43,6 +45,10 @@ const GenerationPokemon = View.extend({
      */
     loadGenerationsSuccessHandler: function (collection) {
         this.$el.html(this.templateGenerations({generations: collection.models}));
+
+        let pokemonCollection = new Pokemons;
+        new PokemonLinks({el: '.pokemon-links'});
+        new PokemonDetails({el: '#pokemon-details', collection: pokemonCollection});
     },
 
     /**

@@ -3,7 +3,6 @@ import {Events} from 'backbone';
 import Generations from './collections/Generations';
 import GenerationLinks from './views/GenerationLinks';
 import GenerationPokemon from './views/GenerationPokemon';
-import Pokemons from './collections/Pokemons';
 
 (function () {
     let setGlobalVariables = function () {
@@ -17,11 +16,10 @@ import Pokemons from './collections/Pokemons';
     let init = function () {
         setGlobalVariables();
         let generationsCollection = new Generations();
-        let pokemonsCollection = new Pokemons();
         new GenerationLinks({el: '#generation-links'});
-        new GenerationPokemon({el: "#generation-pokemon", collection: generationsCollection});
+        new GenerationPokemon({el: '#generation-pokemon', collection: generationsCollection});
 
-        Backbone.history.start({pushState: true, root: '/pokedex'});
+        Backbone.history.start({pushState: true, root: '/Pokedex/'});
     };
 
     window.addEventListener('load', init);

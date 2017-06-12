@@ -13,7 +13,8 @@ const Pokemons = Collection.extend({
     pokemonId: '',
     model: Pokemon,
     url: function () {
-        return 'http://pokeapi.co/api/v2/pokemon' + this.pokemonId;
+        console.log(this.pokemonId);
+        return 'http://pokeapi.co/api/v2/pokemon/' + this.pokemonId + '/';
     }
 });
 
