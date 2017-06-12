@@ -40,13 +40,21 @@
         </script>
         <script id="template-generations" type="text/template">
             <% _.each(generations, function (generation, index, list){%>
-            <h1><%= generation.attributes.main_region.name %></h1>
-            <div>
+                <h1><%= generation.attributes.main_region.name %></h1>
                 <% _.each(generation.get('pokemon_species'), function(pokemon, index, list){ %>
-                    <span><%= pokemon['name'] %></span>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <%= pokemon['name'] %>
+                            </div>
+                            <div class="panel-body">
+                                <div id="pokemon-links">
+                                    <a href="#" data-pokemon-id="<%= pokemon['url'].split('/')[6] %>">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <% }); %>
-
-            </div>
             <% }); %>
         </script>
     </div>

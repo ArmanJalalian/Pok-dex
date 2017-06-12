@@ -3,6 +3,11 @@
  */
 import {Model} from 'backbone';
 
+/**
+ * Model for every generation in the collection
+ *
+ * @constructor
+ */
 const Generation = Model.extend({});
 
 export default Generation;

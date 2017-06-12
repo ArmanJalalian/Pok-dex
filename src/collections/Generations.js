@@ -4,6 +4,11 @@
 import {Collection} from 'backbone';
 import Generation from '../models/Generation';
 
+/**
+ * Collection for the generations endpoint
+ *
+ * @constructor
+ */
 const Generations = Collection.extend({
     id: '',
     model: Generation,
