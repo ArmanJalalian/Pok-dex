@@ -22,6 +22,7 @@ const PokemonRouter = Router.extend({
         App.events.trigger('newPokemon', {
             id: id
         });
+        App.events.trigger('removeGeneration', {});
     }
 });
 

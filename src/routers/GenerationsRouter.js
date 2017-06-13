@@ -22,6 +22,7 @@ const GenerationsRouter = Router.extend({
         App.events.trigger('newGeneration', {
             id: id
         });
+        App.events.trigger('removePokemon', {});
     }
 });
 

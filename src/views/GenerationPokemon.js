@@ -23,10 +23,14 @@ const GenerationPokemon = View.extend({
 
         //Listen to global events for change of new generation
         App.events.on('newGeneration', this.loadGenerations, this);
+        App.events.on('removeGeneration', this.remove, this);
     },
 
+    /**
+     * Remove function to remove element on pokemon load
+     */
     remove: function () {
-        console.log("remove deze shit");
+        this.$el.html('');
     },
 
     /**

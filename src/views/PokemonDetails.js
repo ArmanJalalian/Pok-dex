@@ -3,7 +3,6 @@
  */
 import {View} from 'backbone';
 import _ from 'underscore';
-import GenerationPokemon from '../views/GenerationPokemon';
 
 /**
  * Object representing the PokemonDetails element
@@ -20,6 +19,14 @@ const PokemonDetails = View.extend({
         this.templatePokemonError = _.template(this.$('#template-pokemon-error').html());
 
         App.events.on('newPokemon', this.loadPokemons, this);
+        App.events.on('removePokemon', this.remove, this);
+    },
+
+    /**
+     * Remove function to remove element on generation load
+     */
+    remove: function () {
+        this.$el.html('');
     },
 
     /**
@@ -42,7 +49,6 @@ const PokemonDetails = View.extend({
      */
     loadPokemonSuccessHandler: function (collection) {
         console.log(collection);
-        GenerationPokemon.remove();
         this.$el.html(this.templatePokemons({pokemons: collection.models}));
     },
 

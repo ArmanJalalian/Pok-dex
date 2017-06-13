@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Webpack</title>
 </head>
@@ -42,12 +43,13 @@
             <% _.each(generations, function (generation, index, list){%>
                 <h1><%= generation.attributes.main_region.name %></h1>
                 <% _.each(generation.get('pokemon_species'), function(pokemon, index, list){ %>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <%= pokemon['name'] %>
                             </div>
                             <div class="panel-body">
+                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon['url'].split('/')[6] %>.png" class="img-responsive center-block" alt="<%= pokemon['name'] %>">
                                 <div class="pokemon-links">
                                     <a href="#" data-id="<%= pokemon['url'].split('/')[6] %>">Details</a>
                                 </div>
@@ -63,14 +65,32 @@
             <span><%= message %></span>
         </script>
         <script id="template-pokemons" type="text/template">
-            <% _.each(pokemons, function(pokemon, index, list){ %>
-                <h1><%= pokemon.attributes.name %></h1>
-            <% }); %>
+            <div class="panel panel-default">
+                <% _.each(pokemons, function(pokemon, index, list){ %>
+                <div class="panel-heading">
+                    <h1><%= pokemon.attributes.name %></h1>
+                </div>
+                <div class="panel-body">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png" class="img-responsive center-block pokemon_details" alt="<%= pokemon['name'] %>">
+                    <h2>Learnable moves</h2>
+                    <br>
+                    <% _.each(pokemon.get('moves'), function(moves, index, list){ %>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <%= moves.move.name %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+                <% }); %>
+            </div>
         </script>
     </div>
 </div>
 <script type="text/javascript" src="dist/bundle.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="dist/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
