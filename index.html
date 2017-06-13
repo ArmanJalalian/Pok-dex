@@ -49,12 +49,22 @@
                             </div>
                             <div class="panel-body">
                                 <div class="pokemon-links">
-                                    <a href="#" data-pokemonid="<%= pokemon['url'].split('/')[6] %>">Details</a>
+                                    <a href="#" data-id="<%= pokemon['url'].split('/')[6] %>">Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <% }); %>
+            <% }); %>
+        </script>
+    </div>
+    <div id="pokemon-details">
+        <script id="template-pokemon-error" type="text/template">
+            <span><%= message %></span>
+        </script>
+        <script id="template-pokemons" type="text/template">
+            <% _.each(pokemons, function(pokemon, index, list){ %>
+                <h1><%= pokemon.attributes.name %></h1>
             <% }); %>
         </script>
     </div>

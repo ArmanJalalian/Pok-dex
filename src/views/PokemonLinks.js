@@ -16,7 +16,6 @@ const PokemonLinks = View.extend({
     },
     initialize: function () {
         this.router = new PokemonRouter();
-        console.log("test");
     },
 
     /**
@@ -27,13 +26,9 @@ const PokemonLinks = View.extend({
     clickHandler: function (e) {
         e.preventDefault();
 
-        console.log("test from pokemon clicker");
-
         //Get target the retrieve data properties
         let target = e.currentTarget;
-        let url = 'pokemon/' + target.dataset['pokemonid'];
-
-        console.log(target);
+        let url = 'pokemon/' + target.dataset['id'];
 
         //Use trigger & replace to update URL and make the router listen to change
         this.router.navigate(url, {trigger: true, replace:true});

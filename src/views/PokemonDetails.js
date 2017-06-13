@@ -3,6 +3,7 @@
  */
 import {View} from 'backbone';
 import _ from 'underscore';
+import GenerationPokemon from '../views/GenerationPokemon';
 
 /**
  * Object representing the PokemonDetails element
@@ -10,13 +11,13 @@ import _ from 'underscore';
  * @constructor
  */
 const PokemonDetails = View.extend({
-    /*templatePokemons = '',
-    templatePokemonError = '',*/
+    templatePokemons: '',
+    templatePokemonError: '',
     initialize: function () {
 
         //Set template to use later on view
-        /*this.templatePokemons = _.template(this.$('#template-pokemons').html());
-        this.templatePokemonError = _.template(this.$('#template-pokemon-error'));*/
+        this.templatePokemons = _.template(this.$('#template-pokemons').html());
+        this.templatePokemonError = _.template(this.$('#template-pokemon-error').html());
 
         App.events.on('newPokemon', this.loadPokemons, this);
     },
@@ -40,8 +41,9 @@ const PokemonDetails = View.extend({
      * @param collection
      */
     loadPokemonSuccessHandler: function (collection) {
-        //this.$el.html(this.templatePokemons({pokemons: collection.models}));
         console.log(collection);
+        GenerationPokemon.remove();
+        this.$el.html(this.templatePokemons({pokemons: collection.models}));
     },
 
     /**
@@ -51,7 +53,7 @@ const PokemonDetails = View.extend({
      * @param response
      */
     loadPokemonErrorHandler: function (collection, response) {
-        //this.$el.html(this.templatePokemonError({message: response.responseJSON.error}));
+        this.$el.html(this.templatePokemonError({message: response.responseJSON.error}));
     }
 });
 

@@ -25,6 +25,10 @@ const GenerationPokemon = View.extend({
         App.events.on('newGeneration', this.loadGenerations, this);
     },
 
+    remove: function () {
+        console.log("remove deze shit");
+    },
+
     /**
      * Wrapper function to load the generations through the collection
      *
@@ -49,6 +53,7 @@ const GenerationPokemon = View.extend({
         let pokemonCollection = new Pokemons;
         new PokemonLinks({el: '.pokemon-links'});
         new PokemonDetails({el: '#pokemon-details', collection: pokemonCollection});
+
     },
 
     /**

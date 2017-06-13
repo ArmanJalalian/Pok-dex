@@ -10,11 +10,10 @@ import Pokemon from '../models/Pokemon';
  * @constructor
  */
 const Pokemons = Collection.extend({
-    pokemonId: '',
+    id: '',
     model: Pokemon,
     url: function () {
-        console.log(this.pokemonId);
-        return 'http://pokeapi.co/api/v2/pokemon/' + this.pokemonId + '/';
+        return 'http://pokeapi.co/api/v2/pokemon/' + this.id + '/';
     }
 });
 

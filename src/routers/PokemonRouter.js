@@ -10,7 +10,7 @@ import {Router} from 'backbone';
  */
 const PokemonRouter = Router.extend({
     routes: {
-        'pokemon/:pokemonId': 'pokemonAction'
+        'pokemon/:id': 'pokemonAction'
     },
 
     /**
@@ -18,9 +18,9 @@ const PokemonRouter = Router.extend({
      *
      * @param pokemonId
      */
-    pokemonAction: function (pokemonId) {
+    pokemonAction: function (id) {
         App.events.trigger('newPokemon', {
-            pokemonId: pokemonId
+            id: id
         });
     }
 });
