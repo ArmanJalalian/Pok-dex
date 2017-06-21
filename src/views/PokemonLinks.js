@@ -26,6 +26,8 @@ const PokemonLinks = View.extend({
     clickHandler: function (e) {
         e.preventDefault();
 
+
+
         //Get target the retrieve data properties
         let target = e.currentTarget;
         let url = 'pokemon/' + target.dataset['id'];

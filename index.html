@@ -36,14 +36,14 @@
 <div class="container">
     <div id="generation-pokemon">
         <span>Choose a generation!</span>
-        <script id="template-error" type="text/template">
+        <script id="template-error" type="text/template" src="#">
             <span><%= message %></span>
         </script>
-        <script id="template-generations" type="text/template">
+        <script id="template-generations" type="text/template" src="#">
             <% _.each(generations, function (generation, index, list){%>
                 <h1><%= generation.attributes.main_region.name %></h1>
                 <% _.each(generation.get('pokemon_species'), function(pokemon, index, list){ %>
-                    <div class="col-md-2">
+                    <div class="col-md-2 deleteThis">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <%= pokemon['name'] %>
@@ -51,7 +51,7 @@
                             <div class="panel-body">
                                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon['url'].split('/')[6] %>.png" class="img-responsive center-block" alt="<%= pokemon['name'] %>">
                                 <div class="pokemon-links">
-                                    <a href="#" data-id="<%= pokemon['url'].split('/')[6] %>">Details</a>
+                                    <a class="btn btn-default" href="#" data-id="<%= pokemon['url'].split('/')[6] %>">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -60,35 +60,38 @@
             <% }); %>
         </script>
     </div>
+</div>
+<div id="scrollTo" class="container">
     <div id="pokemon-details">
-        <script id="template-pokemon-error" type="text/template">
-            <span><%= message %></span>
-        </script>
-        <script id="template-pokemons" type="text/template">
-            <div class="panel panel-default">
-                <% _.each(pokemons, function(pokemon, index, list){ %>
-                <div class="panel-heading">
-                    <h1><%= pokemon.attributes.name %></h1>
-                </div>
-                <div class="panel-body">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png" class="img-responsive center-block pokemon_details" alt="<%= pokemon['name'] %>">
-                    <h2>Learnable moves</h2>
-                    <br>
-                    <% _.each(pokemon.get('moves'), function(moves, index, list){ %>
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <%= moves.move.name %>
-                                </div>
-                            </div>
-                        </div>
-                    <% }); %>
-                </div>
-                <% }); %>
-            </div>
-        </script>
+
     </div>
 </div>
+<script id="template-pokemon-error" type="text/template" src="#">
+    <span><%= message %></span>
+</script>
+<script id="template-pokemons" type="text/template" src="#">
+    <div class="panel panel-default deleteThis">
+        <% _.each(pokemons, function(pokemon, index, list){ %>
+        <div class="panel-heading">
+            <h1><%= pokemon.attributes.name %></h1>
+        </div>
+        <div class="panel-body">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.id %>.png" class="img-responsive center-block pokemon_details" alt="<%= pokemon['name'] %>">
+            <h2>Learnable moves</h2>
+            <br>
+            <% _.each(pokemon.get('moves'), function(moves, index, list){ %>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <%= moves.move.name %>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        <% }); %>
+    </div>
+</script>
 <script type="text/javascript" src="dist/bundle.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

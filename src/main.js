@@ -19,7 +19,7 @@ import GenerationPokemon from './views/GenerationPokemon';
         new GenerationLinks({el: '#generation-links'});
         new GenerationPokemon({el: '#generation-pokemon', collection: generationsCollection});
 
-        Backbone.history.start({pushState: true, root: '/Pokedex/'});
+        Backbone.history.start({pushState: true, root: '/pokedex/'});
     };
 
     window.addEventListener('load', init);

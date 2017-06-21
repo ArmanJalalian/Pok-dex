@@ -3,6 +3,7 @@
  */
 import {View} from 'backbone';
 import _ from 'underscore';
+import $ from 'jquery';
 
 /**
  * Object representing the PokemonDetails element
@@ -15,11 +16,11 @@ const PokemonDetails = View.extend({
     initialize: function () {
 
         //Set template to use later on view
-        this.templatePokemons = _.template(this.$('#template-pokemons').html());
-        this.templatePokemonError = _.template(this.$('#template-pokemon-error').html());
+        this.templatePokemons = _.template($('#template-pokemons').html());
+        this.templatePokemonError = _.template($('#template-pokemon-error').html());
 
         App.events.on('newPokemon', this.loadPokemons, this);
-        App.events.on('removePokemon', this.remove, this);
+        //App.events.on('removePokemon', this.remove, this);
     },
 
     /**
@@ -48,8 +49,10 @@ const PokemonDetails = View.extend({
      * @param collection
      */
     loadPokemonSuccessHandler: function (collection) {
-        console.log(collection);
         this.$el.html(this.templatePokemons({pokemons: collection.models}));
+        $('html, body').animate({
+            scrollTop: $("#scrollTo").offset().top
+        }, 1000);
     },
 
     /**
